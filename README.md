@@ -1,15 +1,14 @@
-# VIMMFI_Datasets
+# SWKOA_Datasets
 
-#### 介绍
-船舶环境下的驾驶员行为感知数据集，涉及VISION、WiFi、mmWave Radar、IMU等sensor
-包括各种数据的处理函数、代码等
-python版本为3.8，请运行pip install -r requirements.txt进行环境配置
+#### Introduction
+The Ship Watch-Keeping Officer Activities (SWKOA) dataset is designed for maritime environments and includes data from sensors such as Vision, mmWave Radar, and WiFi (partially). It defines five key behaviors in this context: Observing, Steering, Walking, Sitting, and In-place Activity.
 
-#### 数据集下载地址
-数据集：https://pan.baidu.com/s/1Fgi-XbkebpW7AfK_L4BfzA?pwd=1234 <br>
-标注文件：https://pan.baidu.com/s/1H2gnUMHPNSt5Nqt3Bde4uw?pwd=1234 
 
-标注文件应为label.csv，格式如下:
+#### Download Links
+Dataset: https://pan.baidu.com/s/1Fgi-XbkebpW7AfK_L4BfzA?pwd=1234 <br>
+Annotation File: https://pan.baidu.com/s/1H2gnUMHPNSt5Nqt3Bde4uw?pwd=1234 
+
+The annotation file should be named label.csv with the following format:
 |    file_id   | frame_start | frame_end |       activity       |
 |--------------|-------------|-----------|----------------------|          
 | 202302170944 |     945     |    945    | In_situ_activities   |
@@ -18,38 +17,36 @@ python版本为3.8，请运行pip install -r requirements.txt进行环境配置
 | 202302170944 |     3445    |    3445   | walk                 |
 | 202302170944 |     669     |    729    | watch                |
 
-- **file_id** 文件名，等同于下表中的datetime。
-- **frame_start** 视频帧中一个行为的起始帧。
-- **frame_end** 视频帧中一个行为的起始帧。
-- **activity** 视频帧中一个行为的粗粒度标定结果，包括（原地活动、操舵、坐着、行走、瞭望）。
+- **file_id** Filename, corresponding to the datetime in the table below.
+- **frame_start** The starting frame of an activity in the video.
+- **frame_end** The ending frame of an activity in the video.
+- **activity** The coarse-grained labeled activity in the video, including (In-situ Activity, Operating the Rudder, Sitting, Walking, and Observing).
 
-根据标注文件对Vision、mmWave Radar、WiFi、IMU等的切分代码请参照segmenttation.py文件，处理教程见vision_and_mmWave_process_tutorial.py以及vision_and_wifi_process_tutorial.py
-
-#### 数据集格式如下
+#### Dataset Structure
 
 ```
 |-- SYNCHRONIZATION
     |-- datetime
-        - 该次数据采集的日期 (e.g., 2023-02-17 09:44)
+        - Data collection date (e.g., 2023-02-17 09:44)
         |-- RADAR 
-        |   - 毫米波雷达数据采集
+        |   - mmWave Radar data collection
         |   |-- datetime.mat
-        |   - 毫米波雷达 raw data (e.g., 2023-02-17 09:45:16.mat)
+        |   - mmWave Radar raw data (e.g., 2023-02-17 09:45:16.mat)
         |-- VIDEO
-        |   - 视觉传感器数据采集
+        |   - Visual sensor data collection
         |   |-- datetime
-        |   |   - 视觉传感器数据采集的时间 (e.g., 2023-02-17 09:44)
+        |   |   - Timestamp of visual sensor data collection (e.g., 2023-02-17 09:44)
         |   |-- frame.pkl
-        |   |   - 视频数据每一帧的时间戳
+        |   |   - Timestamps of each video frame
         |   |-- labels.npy
-        |   |   - 由 PySlowFast 初始检测的行为标签
+        |   |   - Activity labels detected by PySlowFast
         |   |-- rgb.avi
-        |   |   - 视频
+        |   |   - Video file
         |   |-- timestamp.npy
-        |   |   - 每个行为的开始时间和结束时间
+        |   |   - Start and end times of each activity
         |-- WiFi
         |   |-- datetime.mat
         |   |   - WiFi raw data (e.g., 2023-02-17 09:45:12.mat)
         |-- initial_sync_index.npy
-        |   - 视觉传感器和毫米波雷达初步同步的时间戳
+        |   - Initial synchronization timestamps between visual sensor and mmWave Radar
 ```
