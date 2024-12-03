@@ -1,7 +1,7 @@
-# SWKOA_Datasets
+# SWOA_Datasets
 
 #### Introduction
-The Ship Watch-Keeping Officer Activities (SWKOA) dataset is designed for maritime environments and includes data from sensors such as Vision, mmWave Radar, and WiFi (partially). It defines five key behaviors in this context: Observing, Steering, Walking, Sitting, and In-place Activity.
+The Ship Watch-Keeping Officer Activities (SWOA) dataset is designed for maritime environments and includes data from sensors such as Vision, mmWave Radar, and WiFi (partially). It defines five key behaviors in this context: Observing, Steering, Walking, Sitting, and In-place Activity.
 
 
 #### Download Links
